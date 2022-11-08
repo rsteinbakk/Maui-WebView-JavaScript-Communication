@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Maui-Javascript</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: #eee;
+    }
+
+    body>div {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      width: 500px;
+      max-width: 100%;
+    }
+
+    textarea {
+      height: 150px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>MAUI WEBVIEW JAVASCRIPT</h1>
+  <div>
+    <textarea id="textarea">This is data from Javascript sendt to MAUI 😊</textarea>
+  </div>
+  <h2>DATA FROM MAUI TO JS:</h2>
+  <div id="jsdata">
+
+  </div>
+  
+  <div id="app"></div>
+  <script type="module" src="/src/main.js"></script>
+
+
+  <script>
+    const textarea = document.querySelector("#textarea")
+    const jsdata = document.querySelector("#jsdata")
+
+    function fromMauiToJS(data) {
+      if (data) {
+        jsdata.innerHTML = data
+      } else {
+        jsdata.innerHTML = "Error: no data from Maui"
+
+      }
+    }
+
+    function fromJStoMaui() {
+      jsdata.innerHTML = textarea.value
+      return textarea.value
+
+    }
+
+  </script>
+</body>
+
+</html>
+

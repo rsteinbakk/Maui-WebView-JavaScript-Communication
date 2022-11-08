@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiJavascript.MainPage"
+             Shell.NavBarIsVisible="false">
+
+    <VerticalStackLayout Spacing="20" Padding="20" Background="#512bd4">
+        <Label Text="How to communicate between MAUI (C#) and WebView (JS)" TextColor="White" FontSize="20" FontAttributes="Bold" HorizontalTextAlignment="Center" HorizontalOptions="Center"/>
+        <VerticalStackLayout BackgroundColor="#512bd4" Padding="10" Spacing="10">
+            <Frame Padding="10, 5">
+            <Entry x:Name="mauiEntry" Placeholder="Entry from maui"/>
+            </Frame>
+        <HorizontalStackLayout HorizontalOptions="Center" Spacing="20">
+                <Button Text="WebView to MAUI" Clicked="WebViewToMaui" Background=""/>
+                <Button Text="MAUI to WebView" Clicked="MauiToWebView"/>
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+        <WebView Source="http://192.168.0.121:5173/" x:Name="jsExampleWebView" HeightRequest="320"  Navigating="JsExampleWebView_NavigatingAsync"/>        <VerticalStackLayout>
+            <Label Text="POSSIBLE USECASES: " TextColor="#eee"/>
+            <Label Text="- Send data from Maui (C#) to WebView (JS)" TextColor="#eee"/>
+            <Label Text="- Get data from WebView (JS) to Maui (C#)" TextColor="#eee"/>
+            <Label Text="- Call Maui (C#) from WebView (JS)" TextColor="#eee"/>
+            <Label Text="- Get an authentication status from a webview" TextColor="#eee"/>
+            <Label Text="- Send authentication status from a maui to webview" TextColor="#eee"/>
+            <Label Text="" TextColor="#eee"/>
+            <Label Text="Tips: If webtechonology is the primary source for your app, it might be a better idea to use MAUI with Blazor." TextColor="#eee"/>
+        </VerticalStackLayout>
+    </VerticalStackLayout>
+
+</ContentPage>

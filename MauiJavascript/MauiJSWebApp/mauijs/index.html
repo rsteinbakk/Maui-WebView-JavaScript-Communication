@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Maui-Javascript</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: #eee;
+    }
+
+    textarea {
+      background-color: black;
+      color: #eee;
+      height: 150px;
+      width: 85vw;
+    }
+  </style>
+</head>
+
+<body>
+  <h3 id="header"></h3>
+
+  <button id="callcsharp">Call C# from WebView</button>
+
+  <div>
+    <textarea id="textarea">This is data from Javascript sendt to MAUI 😊 yeah</textarea>
+  </div>
+  <h4>Data from JS-methods:</h4>
+  <div id="jsdata">
+
+  </div>
+
+  <div id="app"></div>
+  <script type="module" src="/src/main.js"></script>
+
+
+  <script>
+    const header = document.querySelector("#header")
+    header.innerHTML = "WebView " + window.location
+
+    const textarea = document.querySelector("#textarea")
+    const jsdata = document.querySelector("#jsdata")
+    const callcsharp = document.querySelector("#callcsharp")
+
+    callcsharp.addEventListener("click", callC)
+
+    function callC() {
+      // C# will prevent webview to go to this page. C# will use the url as data info to run a chosen command.
+      window.location.href = 'https://runcsharp.displayalert?name=john&country=DK';
+    }
+
+    function dataFromArgumentToHTML(argument) {
+        jsdata.innerHTML = "JS function dataFromArgumentToHTML(): " + argument || ""
+    }
+
+    function dataFromTextarea() {
+      const string = "JS function dataFromTextarea(): " + textarea.value
+      jsdata.innerHTML = string
+      return string
+
+    }
+
+  </script>
+</body>
+
+</html>
