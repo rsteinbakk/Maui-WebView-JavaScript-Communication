@@ -17,50 +17,55 @@
       background: #eee;
     }
 
-    body>div {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-      width: 500px;
-      max-width: 100%;
-    }
-
     textarea {
+      background-color: black;
+      color: #eee;
       height: 150px;
+      width: 85vw;
     }
   </style>
 </head>
 
 <body>
-  <h1>MAUI WEBVIEW JAVASCRIPT</h1>
+  <h3 id="header"></h3>
+
+  <button id="callcsharp">Call C# from WebView</button>
+
   <div>
-    <textarea id="textarea">This is data from Javascript sendt to MAUI 😊</textarea>
+    <textarea id="textarea">This is data from Javascript sendt to MAUI 😊 yeah</textarea>
   </div>
-  <h2>DATA FROM MAUI TO JS:</h2>
+  <h4>Data from JS-methods:</h4>
   <div id="jsdata">
 
   </div>
-  
+
   <div id="app"></div>
   <script type="module" src="/src/main.js"></script>
 
 
   <script>
+    const header = document.querySelector("#header")
+    header.innerHTML = "WebView " + window.location
+
     const textarea = document.querySelector("#textarea")
     const jsdata = document.querySelector("#jsdata")
+    const callcsharp = document.querySelector("#callcsharp")
 
-    function fromMauiToJS(data) {
-      if (data) {
-        jsdata.innerHTML = data
-      } else {
-        jsdata.innerHTML = "Error: no data from Maui"
+    callcsharp.addEventListener("click", callC)
 
-      }
+    function callC() {
+      // C# will prevent webview to go to this page. C# will use the url as data info to run a chosen command.
+      window.location.href = 'https://runcsharp.displayalert?name=john&country=DK';
     }
 
-    function fromJStoMaui() {
-      jsdata.innerHTML = textarea.value
-      return textarea.value
+    function dataFromArgumentToHTML(argument) {
+        jsdata.innerHTML = "JS function dataFromArgumentToHTML(): " + argument || ""
+    }
+
+    function dataFromTextarea() {
+      const string = "JS function dataFromTextarea(): " + textarea.value
+      jsdata.innerHTML = string
+      return string
 
     }
 
@@ -68,4 +73,3 @@
 </body>
 
 </html>
-
